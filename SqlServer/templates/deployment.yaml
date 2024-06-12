@@ -22,7 +22,7 @@ spec:
         release: {{ .Release.Name }}
     spec:
       terminationGracePeriodSeconds: 10
-      ecurityContext:
+      securityContext:
         fsGroup: 1000
       containers:
         - name: {{ .Chart.Name }}
