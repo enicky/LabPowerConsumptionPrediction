@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "helm-sql.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ template "helm-sql.name" . }}
+    chart: {{ template "helm-sql.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 1433
+      protocol: TCP
+  selector:
+    app: {{ template "helm-sql.name" . }}
+    release: {{ .Release.Name }}
