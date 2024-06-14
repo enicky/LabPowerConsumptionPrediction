@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 5000
+      targetPort: 8080
       protocol: TCP
-      name: TCP-5000
+      name: tcp5000
   selector:
     {{- include "DataExporter.selectorLabels" . | nindent 4 }}
