@@ -1,3 +1,5 @@
 # Lab Power Consumption Prediction
 
-TODO
+## SQL Server
+
+Is needed for the scheduling system to have a storage

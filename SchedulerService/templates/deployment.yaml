@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "helm-scheduler.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ template "helm-scheduler.name" .}}
+    chart: {{ template "helm-scheduler.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: {{ template "helm-scheduler.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "helm-scheduler.name" . }}
+        release: {{ .Release.Name }}
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/id: "schedulerservice"
+        dapr.io/app-id: "schedulerservice"
+        dapr.io/app-port: "8080"
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag}}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        env:
+          - name: SQL_CONFIG
+            value: "Server=mssql-service.mssql.svc.cluster.local:1433; Database=HomeAi; User Id=sa;Password=Aveve2008;Encrypt=False"
+        imagePullPolicy: Always
