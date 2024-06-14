@@ -22,16 +22,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 podAnnotations: {dapr.io/app-id: dataexporter, dapr.io/app-port: "8080", dapr.io/enabled: "true", dapr.io/metrics-port: "63895", dapr.io/unix-domain-socket-path: ""}
-env:
-  - name: DAPR_METRICS_PORT
-    value: "63895"
-  - name: APP_ID
-    value: dataexporter
-  - name: APP_CHANNEL_ADDRESS
-  - name: APP_PORT
-    value: "8080"
-  - name: DAPR_HTTP_PORT
-    value: "3510"
+env: {}
 podLabels: {}
 podSecurityContext: {}
 # fsGroup: 2000
