@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-scheduler-env
+data:
+  SCHEDULE: "* 8 * * *"
+  SCHEDULE_TRAIN_MODEL: "* 10 * * *"
+  SQL_CONFIG: "Server=192.168.1.154; Database=HomeAi; User Id=[SQL_USERNAME];Password=[SQL_PASSWORD];Encrypt=False"
