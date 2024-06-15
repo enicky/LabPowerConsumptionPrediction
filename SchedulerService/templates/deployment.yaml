@@ -49,11 +49,11 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      envFrom:
-        - configMapRef:
-          name: config-scheduler-env
-        - secretRef:
-          name: sql
+          envFrom:
+          - configMapRef:
+              name: config-scheduler-env
+          - secretRef:
+              name: sql
       {{- with .Values.env }}
       env:
         {{- toYaml . | nindent 8 }}
