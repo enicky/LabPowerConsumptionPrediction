@@ -1,20 +1,15 @@
-
-# Create the load balancing service
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ template "helm-scheduler.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  name: {{ include "SchedulerService.fullname" . }}
   labels:
-    app: {{ template "helm-scheduler.name" . }}
-    chart: {{ template "helm-scheduler.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
+    {{- include "SchedulerService.labels" . | nindent 4 }}
 spec:
-  selector:
-    app: 
-  ports:
-    - protocol: TCP
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
   type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+      name: tcp8080
+  selector:
+    {{- include "SchedulerService.selectorLabels" . | nindent 4 }}
