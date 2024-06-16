@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: config-scheduler-env
 data:
-  SCHEDULE: "* 8 * * *"
-  SCHEDULE_TRAIN_MODEL: "* 10 * * *"
-  SQL_CONFIG: "Server=192.168.1.154; Database=HomeAi; User Id=[SQL_USERNAME];Password=[SQL_PASSWORD];Encrypt=False"
+  SCHEDULE: "0 8 * * *"
+  SCHEDULE_TRAIN_MODEL: "0 10 * * *"
+  SQL_SERVER: "192.168.1.154"
+  SQL_CONFIG: "Server=[SQL_SERVER]; Database=HomeAi; User Id=[SQL_USERNAME];Password=[SQL_PASSWORD];Encrypt=False"
