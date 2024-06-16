@@ -33,7 +33,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       envFrom:
         - configMapRef:
-          name: config-pythonaitrainer-env
+            name: config-pythonaitrainer-env
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
