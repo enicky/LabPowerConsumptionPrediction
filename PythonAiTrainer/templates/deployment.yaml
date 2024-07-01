@@ -40,6 +40,8 @@ spec:
           envFrom:
           - configMapRef:
               name: config-pythonaitrainer-env
+          - secretRef:
+              name: secret-pythonexporter
           ports:
             - name: http{{ .Values.service.port }}
               containerPort: {{ .Values.service.port }}
