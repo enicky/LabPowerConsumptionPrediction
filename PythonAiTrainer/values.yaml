@@ -25,8 +25,7 @@ podAnnotations: #{}
   dapr.io/app-id: pythonaitrainer
   dapr.io/app-port: "5000"
   dapr.io/enabled: "true"
-  dapr.io/metrics-port: "63895"
-  dapr.io/unix-domain-socket-path: ""
+  dapr.io/enable-api-logging: "true"
 podLabels: {}
 podSecurityContext: {}
 # fsGroup: 2000
