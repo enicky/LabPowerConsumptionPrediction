@@ -23,7 +23,7 @@ serviceAccount:
   name: ""
 podAnnotations: #{}
   dapr.io/app-id: pythonaitrainer
-  dapr.io/app-port: "5000"
+  dapr.io/app-port: "5001"
   dapr.io/enabled: "true"
   dapr.io/enable-api-logging: "true"
 podLabels: {}
