@@ -21,7 +21,7 @@ spec:
         app: {{ template "helm-sql.name" . }}
         release: {{ .Release.Name }}
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 30
       securityContext:
         fsGroup: 1000
       containers:
@@ -38,8 +38,15 @@ spec:
               secretKeyRef:
                 name: mssql-secret
                 key: SA_PASSWORD 
+          volumeMounts:
+          - name: sqlData
+            mountPath: /var/opt/mssql
           resources:
-{{ toYaml .Values.resources | indent 12 }}
+            {{ toYaml .Values.resources | indent 12 }}
+      volumes:
+        - name: sqlData
+          persistentVolumeClaim:
+            claimName: mssql-data
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
