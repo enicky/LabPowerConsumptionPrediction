@@ -1,0 +1,18 @@
+{{- range $.Values.pubsubs}}
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: {{ .name }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  type: pubsub.redis
+  version: v1
+  metadata:
+    - name: redisHost
+      value: redis-master.default.svc.cluster.local:6379
+    - name: redisPassword
+      secretKeyRef:
+        name: redis
+        key: redis-password
+---        
+{{- end }}

@@ -95,3 +95,4 @@ volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
+pubsubs: [{name: "influx-data-pubsub"}, {name: "ai-pubsub"}]
