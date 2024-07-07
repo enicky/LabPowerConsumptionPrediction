@@ -8,7 +8,7 @@ metadata:
 spec:
   revisionHistoryLimit: 3
   {{- if not .Values.autoscaling.enabled }}
-  strategy:
+  strategy: #recreate strategy
     type: Recreate
   replicas: {{ .Values.replicaCount }}
   {{- end }}
