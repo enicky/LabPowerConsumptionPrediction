@@ -7,7 +7,7 @@ image:
   repository: neichmann/schedulerservice
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "app-10"
+  tag: "app-11"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
