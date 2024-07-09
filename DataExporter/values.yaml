@@ -7,7 +7,7 @@ image:
   repository: neichmann/dataexporter
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "app-34"
+  tag: "app-35"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
