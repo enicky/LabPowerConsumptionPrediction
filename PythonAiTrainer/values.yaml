@@ -26,7 +26,7 @@ podAnnotations: #{}
   dapr.io/app-port: "5001"
   dapr.io/enabled: "true"
   dapr.io/enable-api-logging: "true"
-  dapr.io/config: "tracing"
+  #dapr.io/config: "tracing"
 podLabels: {}
 podSecurityContext: {}
 # fsGroup: 2000
@@ -87,18 +87,22 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 # Additional volumes on the output Deployment definition.
-volumes: []
+volumes:
+  - name: ai-trainer-data
+    persistentVolumeClaim:
+      claimName: ai-python-data
 # - name: foo
 #   secret:
 #     secretName: mysecret
 #     optional: false
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
+volumeMounts:
+  - name: ai-trainer-data
+    mountPath: /app/data
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
-
 nodeSelector: {}
 tolerations: []
 affinity: {}
