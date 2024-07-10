@@ -21,7 +21,7 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-podAnnotations: {dapr.io/app-id: dataexporter, dapr.io/app-port: "8080", dapr.io/enabled: "true", dapr.io/metrics-port: "63895", dapr.io/unix-domain-socket-path: ""}
+podAnnotations: {dapr.io/app-id: dataexporter, dapr.io/app-port: "8080", dapr.io/enabled: "true", dapr.io/metrics-port: "63895", dapr.io/unix-domain-socket-path: "", dapr.io/config: "tracing"}
 env: {}
 podLabels: {}
 podSecurityContext: {}
