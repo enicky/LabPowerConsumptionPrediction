@@ -1,16 +1,17 @@
-# Default values for PythonAiTrainer.
+# Default values for SonarQube.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-namespace: ai
+
 replicaCount: 1
+namespace: ai
 image:
-  repository: neichmann/pythonaitrainer
-  pullPolicy: Always
+  repository: sonarqube
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "app-66"
+  tag: "10-community"
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "sonarqube"
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -21,12 +22,7 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-podAnnotations: #{}
-  dapr.io/app-id: pythonaitrainer
-  dapr.io/app-port: "5001"
-  dapr.io/enabled: "true"
-  dapr.io/enable-api-logging: "true"
-  dapr.io/config: "tracing"
+podAnnotations: {}
 podLabels: {}
 podSecurityContext: {}
 # fsGroup: 2000
@@ -41,7 +37,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 5001
+  port: 9000
 ingress:
   enabled: false
   className: ""
@@ -59,7 +55,8 @@ ingress:
   #      - chart-example.local
 resources:
   limits:
-    nvidia.com/gpu: 1 #test
+    cpu: 100m
+    memory: 128Mi
 # We usually recommend not to specify default resources and to leave this as a conscious
 # choice for the user. This also increases chances charts run on environments with little
 # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -70,27 +67,32 @@ resources:
 # requests:
 #   cpu: 100m
 #   memory: 128Mi
-readinessProbeEnabled: false
-livenessProbeEnabled: false
-livenessProbe: {}
-# httpGet:
-#   path: /
-#   port: http
-readinessProbe: {}
-# httpGet:
-#   path: /
-#   port: http
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 # Additional volumes on the output Deployment definition.
 volumes:
-  - name: ai-trainer-data
+  - name: sonarqube_data
     persistentVolumeClaim:
-      claimName: ai-python-data
+      claimName: sonarqube_data
+  - name: sonarqube_extensions
+    persistentVolumeClaim:
+      claimName: sonarqube_extensions
+  - name: sonarqube_logs
+    persistentVolumeClaim:
+      claimName: sonarqube_logs
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -98,11 +100,16 @@ volumes:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - name: ai-trainer-data
-    mountPath: /app/data
+  - name: sonarqube_data
+    mountPath: /opt/sonarqube/data
+  - name: sonarqube_extensions
+    mountPath: /opt/sonarqube/extensions
+  - name: sonarqube_logs
+    mountPath: /opt/sonarqube/logs
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
+
 nodeSelector: {}
 tolerations: []
 affinity: {}
