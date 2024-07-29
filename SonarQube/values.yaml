@@ -87,7 +87,7 @@ volumes:
   - name: sonarqube-data
     persistentVolumeClaim:
       claimName: sonarqube-data
-  - name: sonarqube_extensions
+  - name: sonarqube-extensions
     persistentVolumeClaim:
       claimName: sonarqube-extensions
   - name: sonarqube-logs
