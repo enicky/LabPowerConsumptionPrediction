@@ -84,15 +84,15 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 # Additional volumes on the output Deployment definition.
 volumes:
-  - name: sonarqube_data
+  - name: sonarqube-data
     persistentVolumeClaim:
-      claimName: sonarqube_data
+      claimName: sonarqube-data
   - name: sonarqube_extensions
     persistentVolumeClaim:
-      claimName: sonarqube_extensions
-  - name: sonarqube_logs
+      claimName: sonarqube-extensions
+  - name: sonarqube-logs
     persistentVolumeClaim:
-      claimName: sonarqube_logs
+      claimName: sonarqube-logs
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -100,11 +100,11 @@ volumes:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
-  - name: sonarqube_data
+  - name: sonarqube-data
     mountPath: /opt/sonarqube/data
-  - name: sonarqube_extensions
+  - name: sonarqube-extensions
     mountPath: /opt/sonarqube/extensions
-  - name: sonarqube_logs
+  - name: sonarqube-logs
     mountPath: /opt/sonarqube/logs
 # - name: foo
 #   mountPath: "/etc/foo"

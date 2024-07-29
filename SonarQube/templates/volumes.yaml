@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarqube_data
+  name: sonarqube-data
   namespace: {{ .Values.namespace }}
 spec:
   storageClassName: nfs-client
@@ -14,7 +14,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarqube_extensions
+  name: sonarqube-extensions
   namespace: {{ .Values.namespace }}
 spec:
   storageClassName: nfs-client
@@ -28,7 +28,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: sonarqube_logs
+  name: sonarqube-logs
   namespace: {{ .Values.namespace }}
 spec:
   storageClassName: nfs-client
