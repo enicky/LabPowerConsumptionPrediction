@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "SonarQube.labels" . | nindent 4 }}
   namespace: {{ .Values.namespace }}
-  
+
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -42,10 +42,10 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
-          livenessProbe:
-            {{- toYaml .Values.livenessProbe | nindent 12 }}
-          readinessProbe:
-            {{- toYaml .Values.readinessProbe | nindent 12 }}
+          # livenessProbe:
+          #   {{- toYaml .Values.livenessProbe | nindent 12 }}
+          # readinessProbe:
+          #   {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
