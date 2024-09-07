@@ -103,6 +103,7 @@ volumeMounts:
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
-nodeSelector: {}
+nodeSelector:
+  - kubernetes.io/hostname: cube03
 tolerations: []
 affinity: {}
