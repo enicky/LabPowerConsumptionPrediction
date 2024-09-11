@@ -10,5 +10,6 @@ data:
   APP_ID: "pythonaitrainer"
   perform_training: "True"
   train_epochs: "100"
-  patience: 10
-  batch_size: 256
+  patience: "10"
+  batch_size: "256"
+ 
