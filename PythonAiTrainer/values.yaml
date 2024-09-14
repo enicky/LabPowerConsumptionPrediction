@@ -91,6 +91,10 @@ volumes:
   - name: ai-trainer-data
     persistentVolumeClaim:
       claimName: ai-python-data
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 4Gi
+    name: shm
 # - name: foo
 #   secret:
 #     secretName: mysecret
@@ -100,6 +104,8 @@ volumes:
 volumeMounts:
   - name: ai-trainer-data
     mountPath: /app/data
+  - name: shm
+    mountPath: /dev/shm
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
