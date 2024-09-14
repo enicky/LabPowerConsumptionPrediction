@@ -11,5 +11,5 @@ data:
   perform_training: "True"
   train_epochs: "100"
   patience: "10"
-  batch_size: "256"
+  batch_size: "128"
  
