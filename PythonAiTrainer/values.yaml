@@ -113,12 +113,12 @@ volumeMounts:
   - name: ai-prob-results-main
     mountPath: /app/prob_results
     subPath: ai-prob-prob-results
-  - name: ai-prob-results-main
-    mountPath: /app/results
-    subPath: ai-prob-results
-  - name: ai-prob-results-main
-    mountPath: /app/test_results
-    subPath: ai-prob-test-results
+    # - name: ai-prob-results-main
+    #   mountPath: /app/results
+    #   subPath: ai-prob-results
+    # - name: ai-prob-results-main
+    #   mountPath: /app/test_results
+    #   subPath: ai-prob-test-results
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
