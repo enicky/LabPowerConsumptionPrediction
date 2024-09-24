@@ -98,7 +98,6 @@ volumes:
   - name: ai-prob-results-main
     persistentVolumeClaim:
       claimName: ai-prob-results-main
-  -
 # - name: foo
 #   secret:
 #     secretName: mysecret
