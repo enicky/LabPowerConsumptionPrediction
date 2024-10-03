@@ -118,6 +118,9 @@ volumeMounts:
   - name: ai-prob-results-main
     mountPath: /app/test_results
     subPath: ai-prob-test-results
+  - name: ai-prob-results-main
+    mountPath: /app/checkpoints
+    subPath: ai-prop-results-checkpoints
 # - name: foo
 #   mountPath: "/etc/foo"
 #   readOnly: true
