@@ -7,7 +7,7 @@ image:
   repository: neichmann/pythonaitrainer
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "app-74"
+  tag: "app-75"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
