@@ -5,8 +5,7 @@ metadata:
   name: sprinkler-web
   namespace: {{ .Values.namespace }}
   labels:
-    labels:
-      {{- include "Sprinkler.labels" . | nindent 4 }}
+    {{- include "Sprinkler.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - web
@@ -26,7 +25,7 @@ metadata:
   name: sprinkler-websecure
   namespace: {{ .Values.namespace }}
   labels:
-    test: a
+    {{- include "Sprinkler.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - websecure
