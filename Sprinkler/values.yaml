@@ -12,11 +12,11 @@ ingress:
   web:
     kind: Rule
     match: Host(`sprinkler.gitlab.be`)
-    servicename: sprinkler
+    servicename: opensprinkler
     serviceport: 8080
   websecure:
     kind: Rule
     match: Host(`sprinkler.gitlab.be`)
-    servicename: sprinkler
+    servicename: opensprinkler
     serviceport: 8080
     secretName: sprinkler.gitlab.be

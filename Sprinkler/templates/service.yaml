@@ -10,7 +10,7 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
-      name: sprinkler
+      name: opensprinkler
   externalName: {{ .Values.service.externalName }}
   selector:
     {{- include "Sprinkler.selectorLabels" . | nindent 4 }}
