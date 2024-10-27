@@ -37,7 +37,6 @@ resources: {}
 #  cpu: 100m
 #  memory: 128Mi
 
-nodeSelector: 
-  kubernetes.io/hostname=cube01
+nodeSelector: {}
 tolerations: []
 affinity: {}

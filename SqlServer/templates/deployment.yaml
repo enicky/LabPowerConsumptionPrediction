@@ -49,6 +49,7 @@ spec:
             claimName: mssql-data
     {{- with .Values.nodeSelector }}
       nodeSelector:
+         kubernetes.io/hostname=cube01
 {{ toYaml . | indent 8 }}
     {{- end }}
     {{- with .Values.affinity }}
