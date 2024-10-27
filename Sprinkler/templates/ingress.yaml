@@ -1,0 +1,50 @@
+--- 
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sprinkler-web
+  namespace: {{ .Values.namespace }}
+  labels:
+    labels:
+      {{- include "Sprinkler.labels" . | nindent 4 }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: {{ .Values.ingress.web.kind }}
+      match: {{ .Values.ingress.web.match}}
+      middlewares:
+        - name: redirect-https
+      services:
+        - name: {{ .Values.ingress.web.servicename }}
+          port: {{ .Values.ingress.web.serviceport }}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sprinkler-websecure
+  namespace: {{ .Values.namespace }}
+  labels:
+    test: a
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: {{ .Values.ingress.websecure.kind }}
+      match: {{ .Values.ingress.websecure.match }}
+      services:
+        - name: {{ .Values.ingress.websecure.servicename }}
+          port: {{ .Values.ingress.websecure.serviceport}}
+  tls:
+    secretName: {{ .Values.ingress.websecure.secretName }}  
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-https
+  namespace: {{ .Values.namespace }}
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true

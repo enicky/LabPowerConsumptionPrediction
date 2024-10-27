@@ -1,0 +1,22 @@
+# Default values for Sprinkler.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+namespace: opensprinkler
+nameOverride: ""
+fullnameOverride: ""
+service:
+  type: ExternalName
+  port: 8080
+  externalName: 192.168.1.109
+ingress:
+  web:
+    kind: Rule
+    match: Host(`sprinkler.gitlab.be`)
+    servicename: sprinkler
+    serviceport: 8080
+  websecure:
+    kind: Rule
+    match: Host(`sprinkler.gitlab.be`)
+    servicename: sprinkler
+    serviceport: 8080
+    secretName: sprinkler.gitlab.be
