@@ -2,10 +2,10 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: sprinkler-web
+  name: hass-web
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "Sprinkler.labels" . | nindent 4 }}
+    {{- include "HomeAssistant.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - web
@@ -22,10 +22,10 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: sprinkler-websecure
+  name: hass-websecure
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "Sprinkler.labels" . | nindent 4 }}
+    {{- include "HomeAssistant.labels" . | nindent 4 }}
 spec:
   entryPoints:
     - websecure
