@@ -1,0 +1,21 @@
+# Default values for HomeAssistant.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: hass
+service:
+  type: ExternalName
+  port: 8123
+  externalName: 192.168.1.184
+ingress:
+  web:
+    kind: Rule
+    match: Host(`home.gitlab.be`)
+    servicename: opensprinkler
+    serviceport: 8123
+  websecure:
+    kind: Rule
+    match: Host(`home.gitlab.be`)
+    servicename: opensprinkler
+    serviceport: 8123
+    secretName: home.gitlab.be

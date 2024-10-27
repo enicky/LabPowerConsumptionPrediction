@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "HomeAssistant.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "HomeAssistant.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      name: hass-nuc
+  externalName: {{ .Values.service.externalName }}
+  selector:
+    {{- include "HomeAssistant.selectorLabels" . | nindent 4 }}
