@@ -4,12 +4,13 @@ kind: Component
 metadata:
   name: {{ .name }}
   namespace: {{ $.Values.namespace }}
+  #temp
 spec:
   type: pubsub.redis
   version: v1
   metadata:
     - name: redisHost
-      value: redis-master.redis-server.svc.cluster.local:6379
+      value: {{ .host }}
     - name: redisPassword
       secretKeyRef:
         name: redis
