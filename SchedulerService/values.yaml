@@ -100,4 +100,4 @@ volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
-pubsubs: [{name: "influx-data-pubsub", host: "redis-master.redis-server.svc.cluster.local:6379"}, {name: "ai-pubsub", host: "redis-master.redis-server.svc.cluster.local:6379"}]
+pubsubs: [{name: "influx-data-pubsub", host: "redis-server.redis-server.svc.cluster.local:6379"}, {name: "ai-pubsub", host: "redis-server.redis-server.svc.cluster.local:6379"}]

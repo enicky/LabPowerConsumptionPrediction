@@ -27,7 +27,6 @@ podAnnotations:
   dapr.io/enabled: "true"
   dapr.io/metrics-port: "63895"
   dapr.io/unix-domain-socket-path: ""
-  dapr.io/config: "tracing"
 env: {}
 podLabels: {}
 podSecurityContext: {}
