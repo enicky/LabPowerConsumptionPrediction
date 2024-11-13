@@ -13,4 +13,5 @@ data:
   train_epochs: "100"
   patience: "10"
   batch_size: "128"
+  enable_tqdm: "False"
  
