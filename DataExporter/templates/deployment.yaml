@@ -50,7 +50,7 @@ spec:
             - secretRef:
                 name: secret-dataexporter
             - configMapRef:
-              name: config-dataexporter-env
+                name: config-dataexporter-env
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
