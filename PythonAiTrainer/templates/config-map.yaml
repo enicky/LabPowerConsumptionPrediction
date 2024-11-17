@@ -11,7 +11,7 @@ data:
   APP_ID: "pythonaitrainer"
   perform_training: "True"
   train_epochs: "100"
-  patience: "10"
+  patience: "2"
   batch_size: "128"
   enable_tqdm: "False"
  
