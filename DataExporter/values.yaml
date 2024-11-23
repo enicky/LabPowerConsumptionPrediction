@@ -22,6 +22,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 podAnnotations:
+  dapr.io/config: "appconfig"
   dapr.io/app-id: dataexporter
   dapr.io/app-port: "8080"
   dapr.io/enabled: "true"

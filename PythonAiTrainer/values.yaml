@@ -22,6 +22,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 podAnnotations: #{}
+  dapr.io/config: "appconfig"
   dapr.io/app-id: pythonaitrainer
   dapr.io/app-port: "5001"
   dapr.io/enabled: "true"
@@ -58,8 +59,8 @@ ingress:
   #    hosts:
   #      - chart-example.local
 resources: {}
-  # limits:
-  #  nvidia.com/gpu: 1 #test
+# limits:
+#  nvidia.com/gpu: 1 #test
 # We usually recommend not to specify default resources and to leave this as a conscious
 # choice for the user. This also increases chances charts run on environments with little
 # resources, such as Minikube. If you do want to specify resources, uncomment the following
